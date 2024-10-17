@@ -1,122 +1,30 @@
 [
-    {
-        "name": "Ulefone Armor 13 256 GB Silver Black",
-        "price": "5999 lei",
-        "product": "Ulefone",
-        "link": "https://darwin.md/ulefone-armor-13-8-gb-256-gb-black.html"
-    },
-    {
-        "name": "Xiaomi Redmi 10A 128 GB Gray",
-        "price": "3799 lei",
-        "product": "Xiaomi",
-        "link": "https://darwin.md/xiaomi-redmi-10a-4-gb-128-gb-gray.html"
-    },
-    {
-        "name": "Apple iPhone 16 128 GB Black",
-        "price": "20499 lei",
-        "product": "Apple",
-        "link": "https://darwin.md/smartphone-apple-iphone-16-6-gb-128-gb-single-sim-5g-black.html"
-    },
-    {
-        "name": "Xiaomi Redmi 10A 64 GB Gray",
-        "price": "3399 lei",
-        "product": "Xiaomi",
-        "link": "https://darwin.md/xiaomi-redmi-10a-3-gb-64-gb-gray.html"
-    },
-    {
-        "name": "Xiaomi Redmi 10A 64 GB Silver",
-        "price": "3399 lei",
-        "product": "Xiaomi",
-        "link": "https://darwin.md/xiaomi-redmi-10a-3-gb-64-gb-silver.html"
-    },
-    {
-        "name": "Xiaomi Redmi 10A 128 GB Blue",
-        "price": "3799 lei",
-        "product": "Xiaomi",
-        "link": "https://darwin.md/xiaomi-redmi-10a-4-gb-128-gb-blue.html"
-    },
-    {
-        "name": "Xiaomi Redmi 10A 128 GB Silver",
-        "price": "3799 lei",
-        "product": "Xiaomi",
-        "link": "https://darwin.md/xiaomi-redmi-10a-4-gb-128-gb-silver.html"
-    },
-    {
-        "name": "Asus ROG Phone 8 Pro 512 GB Black Phantom",
-        "price": "25999 lei",
-        "product": "Asus",
-        "link": "https://darwin.md/asus-rog-phone-8-pro-16-gb-512-gb-dual-sim-5gphantom-black.html"
-    },
-    {
-        "name": "Asus ROG Phone 8 Pro 1 TB Black Phantom",
-        "price": "34499 lei",
-        "product": "Asus",
-        "link": "https://darwin.md/asus-rog-phone-8-pro-24-gb-1-tb-dual-sim-5gphantom-black.html"
-    },
-    {
-        "name": "Apple iPhone 16 128 GB White",
-        "price": "20499 lei",
-        "product": "Apple",
-        "link": "https://darwin.md/smartphone-apple-iphone-16-6-gb-128-gb-single-sim-5g-white.html"
-    },
-    {
-        "name": "Apple iPhone 16 128 GB Pink",
-        "price": "20499 lei",
-        "product": "Apple",
-        "link": "https://darwin.md/smartphone-apple-iphone-16-6-gb-128-gb-single-sim-5g-pink.html"
-    },
-    {
-        "name": "Apple iPhone 16 128 GB Ultramarine",
-        "price": "20499 lei",
-        "product": "Apple",
-        "link": "https://darwin.md/smartphone-apple-iphone-16-6-gb-128-gb-single-sim-5g-ultramarine.html"
-    },
-    {
-        "name": "Apple iPhone 16 128 GB Teal",
-        "price": "20499 lei",
-        "product": "Apple",
-        "link": "https://darwin.md/smartphone-apple-iphone-15-6-gb-128-gb-single-sim-5g-teal.html"
-    },
-    {
-        "name": "Honor Magic 6 Lite 256 GB Black Midnight",
-        "price": "6499 lei",
-        "product": "Honor",
-        "link": "https://darwin.md/smartphone-honor-magic-6-lite-8-gb-256-gb-dual-sim-5g-midnight-black.html"
-    },
-    {
-        "name": "Honor Magic 6 Lite 256 GB Green Emerald",
-        "price": "6499 lei",
-        "product": "Honor",
-        "link": "https://darwin.md/smartphone-honor-magic-6-lite-8-gb-256-gb-dual-sim-5g-emerald-green.html"
-    },
-    {
-        "name": "Samsung Galaxy S23+ 256 GB Pink Light",
-        "price": "20499 lei",
-        "product": "Samsung",
-        "link": "https://darwin.md/samsung-galaxy-s23-8-gb-256-gb-light-pink.html"
-    },
-    {
-        "name": "Apple iPhone 11 64 GB Black",
-        "price": "9999 lei",
-        "product": "Apple",
-        "link": "https://darwin.md/smartphone_apple-iphone-11-64gb-black.html"
-    },
-    {
-        "name": "Apple iPhone 11 128 GB White",
-        "price": "10999 lei",
-        "product": "Apple",
-        "link": "https://darwin.md/smartphone_apple-iphone-11-128gb-white.html"
-    },
-    {
-        "name": "Samsung Galaxy S21 FE 128 GB Gray",
-        "price": "12899 lei",
-        "product": "Samsung",
-        "link": "https://darwin.md/samsung-galaxy-s21-fe-6-gb-128-gb-gray.html"
-    },
-    {
-        "name": "Apple iPhone 13 128 GB Midnight",
-        "price": "14199 lei",
-        "product": "Apple",
-        "link": "https://darwin.md/apple-iphone-13-4-gb-128-gb-midnight.html"
-    }
+  {
+    "name": "Apple iPhone 15 Pro Max 256 GB Natural Titanium",
+    "price": "1349 EUR",
+    "product": "Apple",
+    "link": "https://darwin.md/apple-iphone-15-pro-max-8-gb-256-gb-single-sim-5gtitanium-natural.html",
+    "timestamp": "2024-10-17T08:37:20.206294"
+  },
+  {
+    "name": "Apple iPhone 15 Pro Max 256 GB Blue Titanium",
+    "price": "1349 EUR",
+    "product": "Apple",
+    "link": "https://darwin.md/apple-iphone-15-pro-max-8-gb-256-gb-single-sim-5gtitanium-blue.html",
+    "timestamp": "2024-10-17T08:37:23.032485"
+  },
+  {
+    "name": "Apple iPhone 15 Pro Max 256 GB Black Titanium",
+    "price": "1349 EUR",
+    "product": "Apple",
+    "link": "https://darwin.md/smartphone-apple-iphone-15-pro-max-mu773rx-a-8-gb-256-gb-single-sim-5g-black-titanium.html",
+    "timestamp": "2024-10-17T08:37:25.226686"
+  },
+  {
+    "name": "Apple iPhone 15 Pro Max 256 GB White Titanium",
+    "price": "1349 EUR",
+    "product": "Apple",
+    "link": "https://darwin.md/apple-iphone-15-pro-max-8-gb-256-gb-single-sim-5gtitanium-white.html",
+    "timestamp": "2024-10-17T08:37:27.209146"
+  }
 ]

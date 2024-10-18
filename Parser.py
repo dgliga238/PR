@@ -4,7 +4,6 @@ import re
 import functools
 from datetime import datetime
 from bs4 import BeautifulSoup
-import json
 
 
 def create_ssl_socket(hostname, port=443):
@@ -45,28 +44,55 @@ def price_range(price):
     return 1000 < price
 
 
+def custom_serialize(obj):
+    """
+    Custom serialization method to convert Python objects into a custom string format.
+    """
+    if isinstance(obj, dict):
+        return '{' + ';'.join(f"{k}={custom_serialize(v)}" for k, v in obj.items()) + '}'
+    elif isinstance(obj, list):
+        return '[' + ','.join(custom_serialize(item) for item in obj) + ']'
+    elif isinstance(obj, str):
+        return f'"{obj}"'
+    elif isinstance(obj, int):
+        return f'i:{obj}'
+    else:
+        raise TypeError(f"Unsupported type: {type(obj)}")
+
+
+def custom_deserialize(serialized_str):
+    """
+    Custom deserialization method to convert a custom string format back into Python objects.
+    """
+    if serialized_str.startswith('{') and serialized_str.endswith('}'):
+        items = serialized_str[1:-1].split(';')
+        return {k: custom_deserialize(v) for k, v in (item.split('=') for item in items)}
+    elif serialized_str.startswith('[') and serialized_str.endswith(']'):
+        items = serialized_str[1:-1].split(',')
+        return [custom_deserialize(item) for item in items]
+    elif serialized_str.startswith('"') and serialized_str.endswith('"'):
+        return serialized_str[1:-1]
+    elif serialized_str.startswith('i:'):
+        return int(serialized_str[2:])
+    else:
+        raise ValueError(f"Cannot deserialize: {serialized_str}")
+
+
 def main():
     hostname = 'darwin.md'
     port = 443
 
     try:
-        # Create the initial socket connection to get the product list
         sock = create_ssl_socket(hostname, port)
         sock.connect((socket.gethostbyname(hostname), port))
         print(f"The socket has successfully connected to {hostname}")
 
-        # Sending an HTTP GET request (over HTTPS)
         http_request = "GET /telefoane/smartphone HTTP/1.1\r\nHost: darwin.md\r\nConnection: close\r\n\r\n"
         response = send_http_request(sock, http_request)
-        sock.close()  # Close the socket after receiving the initial response
+        sock.close()
 
-        # Decoding the response
         response_str = response.decode()
-
-        # Splitting the response into headers and body
         headers, response_body = response_str.split("\r\n\r\n", 1)
-
-        # Parsing the HTML response
         soup = BeautifulSoup(response_body, "html.parser")
         products = []
         raw_prices = []
@@ -75,17 +101,15 @@ def main():
         for product in soup.find_all("figure", class_="card card-product border-0"):
             names, price_int = parse_product_info(product)
             if price_int:
-                raw_prices.append(price_int)  # Store the raw price string
+                raw_prices.append(price_int)
                 link = product.find("figcaption").find("div", class_="title").a.get("href")
 
-                # Create a new socket connection for the product detail request
                 detail_sock = create_ssl_socket(hostname, port)
                 detail_sock.connect((socket.gethostbyname(hostname), port))
 
-                # Send a request for the product details
                 detail_request = f"GET {link} HTTP/1.1\r\nHost: darwin.md\r\nConnection: close\r\n\r\n"
                 detail_response = send_http_request(detail_sock, detail_request)
-                detail_sock.close()  # Close the socket after receiving the detail response
+                detail_sock.close()
 
                 detail_response_str = detail_response.decode()
                 detail_headers, detail_response_body = detail_response_str.split("\r\n\r\n", 1)
@@ -116,18 +140,20 @@ def main():
                         """
                         xml_products.append(xml_product)
 
-
-        # Display the XML output after all products have been processed
         xml_output = "<products>\n" + "\n".join(xml_products) + "\n</products>"
         print("\nFiltered products in XML format:")
         print(xml_output)
 
-        # Print products in JSON format
-        json_output = json.dumps(products, indent=4)  # Convert products list to JSON format
+        # Create JSON output manually to match the XML-like structure
+        json_output = '{\n  "products": [\n'
+        json_output += ",\n".join([
+            f'    {{\n      "name": "{p["name"]}",\n      "price": "{p["price"]}",\n      "producator": "{p["producator"]}",\n      "link": "{p["link"]}"\n    }}'
+            for p in products
+        ])
+        json_output += "\n  ]\n}"
         print("\nFiltered products in JSON format:")
         print(json_output)
 
-        # Filter valid prices
         prices = list(map(int, raw_prices))
         price_eur = list(map(convert, prices))
         valid_prices = list(filter(price_range, price_eur))
@@ -138,10 +164,20 @@ def main():
         else:
             print("No valid prices found.")
 
+        # Serialize and Deserialize the product data
+        serialized_data = custom_serialize(products)
+        print("\nSerialized products:")
+        print(serialized_data)
+
+        deserialized_data = custom_deserialize(serialized_data)
+        print("\nDeserialized products:")
+        print(deserialized_data)
+
     except Exception as e:
         print(f"An error occurred: {e}")
 
 
 if __name__ == "__main__":
     main()
+
 

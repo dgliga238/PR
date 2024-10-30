@@ -1,4 +1,14 @@
+import psycopg2
 
+# Database connection
+connection = psycopg2.connect(
+    database="DanaPR",
+    user="postgres",
+    password="Dana",
+    host="localhost",
+    port=8888
+)
+cursor = connection.cursor()
 
 # Import the HTTP server classes
 from http.server import SimpleHTTPRequestHandler, HTTPServer

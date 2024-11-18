@@ -2,15 +2,12 @@ from flask import Flask, render_template, request, session, redirect, url_for
 from flask_socketio import join_room, leave_room, send, SocketIO
 import random
 from string import ascii_uppercase
-import threading
-from gevent import monkey
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "hjhjsdahhds"
 socketio = SocketIO(app, async_mode='gevent')
 
 rooms = {}
-
 
 def generate_unique_code(length):
     while True:
@@ -109,4 +106,5 @@ def disconnect():
 
 
 if __name__ == "__main__":
-    socketio.run(app, debug=True, allow_unsafe_werkzeug=True, port=5000)
+     socketio.run(app, debug=True, allow_unsafe_werkzeug=True, port=5000)
+    #socketio.run(app, host='0.0.0.0', debug=True, allow_unsafe_werkzeug=True, port=5000)

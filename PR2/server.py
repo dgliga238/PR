@@ -11,9 +11,10 @@ connection = psycopg2.connect(
     database="DanaPR",
     user="postgres",
     password="Dana080603",
-    host="localhost",
-    port=8888
+    host="localhost",  # Use Docker's internal networking
+    port=5432  # Ensure this matches the exposed port on the host
 )
+
 cursor = connection.cursor()
 
 class MyRequestHandler(SimpleHTTPRequestHandler):
@@ -91,7 +92,18 @@ class MyRequestHandler(SimpleHTTPRequestHandler):
                 self.end_headers()
                 self.wfile.write(b"No file uploaded")
 
+def initialize_database():
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS devices (
+            device_id SERIAL PRIMARY KEY,
+            name_device TEXT NOT NULL,
+            price INT NOT NULL
+        );
+    """)
+    connection.commit()
+
 def run_http_server():
+    initialize_database()
     server_address = ('', 8000)
     httpd = HTTPServer(server_address, MyRequestHandler)
     print("Starting HTTP server on port 8000...")
